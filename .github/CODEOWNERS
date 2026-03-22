@@ -1,0 +1,136 @@
+# CODEOWNERS
+#
+# This file defines code ownership for this repository.
+# Each line defines a pattern and the teams/users that own matching files.
+# Owners are automatically requested for review when a PR modifies their files.
+#
+# Documentation: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+#
+# Format: <pattern> <owner1> <owner2> ...
+#
+# Order matters! Later rules override earlier ones.
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DEFAULT OWNERS - Required for all changes
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Default owners for everything in the repo
+# These owners will be requested for review for any PR
+*                               @Tatvic/{{TEAM_SLUG}}-tech-leads
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DOCUMENTATION
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# README and root documentation
+README.md                       @Tatvic/{{TEAM_SLUG}}-tech-leads
+CONTRIBUTING.md                 @Tatvic/{{TEAM_SLUG}}-tech-leads
+CHANGELOG.md                    @Tatvic/{{TEAM_SLUG}}-tech-leads
+
+# Documentation folder
+/docs/                          @Tatvic/{{TEAM_SLUG}}-senior-developers
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CI/CD AND INFRASTRUCTURE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# GitHub Actions workflows - DevOps team required
+/.github/workflows/             @Tatvic/devops @Tatvic/{{TEAM_SLUG}}-tech-leads
+/.github/                       @Tatvic/{{TEAM_SLUG}}-tech-leads
+
+# Docker configuration
+Dockerfile                      @Tatvic/devops
+docker-compose*.yml             @Tatvic/devops
+
+# Kubernetes manifests
+/k8s/                           @Tatvic/devops
+
+# Terraform/Infrastructure as Code
+/terraform/                     @Tatvic/devops
+/infra/                         @Tatvic/devops
+
+# Cloud Build (GCP)
+cloudbuild*.yaml                @Tatvic/devops
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CONFIGURATION FILES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Package management
+package.json                    @Tatvic/{{TEAM_SLUG}}-senior-developers
+package-lock.json               @Tatvic/{{TEAM_SLUG}}-senior-developers
+requirements.txt                @Tatvic/{{TEAM_SLUG}}-senior-developers
+pyproject.toml                  @Tatvic/{{TEAM_SLUG}}-senior-developers
+
+# Environment configuration
+.env.example                    @Tatvic/{{TEAM_SLUG}}-senior-developers @Tatvic/devops
+
+# Linting and formatting
+.eslintrc*                      @Tatvic/{{TEAM_SLUG}}-senior-developers
+.prettierrc*                    @Tatvic/{{TEAM_SLUG}}-senior-developers
+.editorconfig                   @Tatvic/{{TEAM_SLUG}}-senior-developers
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# APPLICATION SOURCE CODE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Main source directory
+/src/                           @Tatvic/{{TEAM_SLUG}}-developers @Tatvic/{{TEAM_SLUG}}-senior-developers
+
+# API routes and controllers
+/src/api/                       @Tatvic/{{TEAM_SLUG}}-senior-developers
+/src/routes/                    @Tatvic/{{TEAM_SLUG}}-senior-developers
+/src/controllers/               @Tatvic/{{TEAM_SLUG}}-senior-developers
+
+# Core business logic
+/src/core/                      @Tatvic/{{TEAM_SLUG}}-tech-leads
+/src/services/                  @Tatvic/{{TEAM_SLUG}}-senior-developers
+
+# Database and models
+/src/models/                    @Tatvic/{{TEAM_SLUG}}-senior-developers
+/src/database/                  @Tatvic/{{TEAM_SLUG}}-senior-developers
+/migrations/                    @Tatvic/{{TEAM_SLUG}}-senior-developers
+
+# Security-sensitive code
+/src/auth/                      @Tatvic/{{TEAM_SLUG}}-tech-leads @Tatvic/security
+/src/security/                  @Tatvic/{{TEAM_SLUG}}-tech-leads @Tatvic/security
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TESTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Test files
+/tests/                         @Tatvic/{{TEAM_SLUG}}-developers @Tatvic/qa
+/__tests__/                     @Tatvic/{{TEAM_SLUG}}-developers @Tatvic/qa
+*.test.js                       @Tatvic/{{TEAM_SLUG}}-developers
+*.spec.js                       @Tatvic/{{TEAM_SLUG}}-developers
+*_test.py                       @Tatvic/{{TEAM_SLUG}}-developers
+
+# E2E tests
+/e2e/                           @Tatvic/qa @Tatvic/{{TEAM_SLUG}}-senior-developers
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# RELEASE MANAGEMENT
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Version files - Only release managers
+VERSION                         @Tatvic/release-managers
+version.py                      @Tatvic/release-managers
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# NOTES
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Teams referenced (ensure these exist in your organization):
+#   - @Tatvic/{{TEAM_SLUG}}-tech-leads
+#   - @Tatvic/{{TEAM_SLUG}}-senior-developers
+#   - @Tatvic/{{TEAM_SLUG}}-developers
+#   - @Tatvic/devops
+#   - @Tatvic/qa
+#   - @Tatvic/security
+#   - @Tatvic/release-managers
+#
+# Individual owners can also be specified: @username
+#
+# To test CODEOWNERS syntax:
+#   https://github.com/Tatvic/gMap_Demo_2/settings/access
